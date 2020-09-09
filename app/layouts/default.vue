@@ -1,7 +1,10 @@
 <template>
     <div class="h-100">
         <navbar />
-        <nuxt />
+        <b-container>
+            <nuxt />
+        </b-container>
+        <toast />
     </div>
 </template>
 
@@ -66,5 +69,14 @@ div#__layout {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.container {
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
 }
 </style>

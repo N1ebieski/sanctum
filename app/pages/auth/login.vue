@@ -1,10 +1,10 @@
 <template>
-    <div class="row h-100">
-        <div class="col-lg-4 m-auto">
+    <div class="row w-100 h-100">
+        <div class="col-lg-8 m-auto">
             <b-card>
                 <template v-slot:header>
                     <h5 class="mb-0">
-                        Zaloguj się
+                        {{ title }}
                     </h5>
                 </template>
                 <form @submit.prevent="login()">
@@ -47,9 +47,6 @@
                             >
                                 Zapamiętaj mnie
                             </b-form-checkbox>
-                            <!-- <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
-                                Zapomniałem hasła
-                            </router-link> -->
                         </div>
                     </div>
 
@@ -80,7 +77,8 @@ export default {
                 password: '',
                 remember: false,
                 busy: false
-            })
+            }),
+            title: 'Zaloguj się'
         }
     },
     methods: {
@@ -92,19 +90,26 @@ export default {
                 await this.$auth.loginWith('laravelSanctum', {
                     data: this.form
                 })
+
+                this.$nuxt.$emit('toast', {
+                    variant: 'success',
+                    title: 'Autentykacja',
+                    body: 'Pomyślnie zalogowano'
+                })
+                this.$nuxt.$emit('loggedIn', true)
+                this.$router.push({ name: 'index' })
             } catch (e) {
                 this.form.busy = false
 
                 if (e.response.data.errors) {
                     this.form.errors.set(this.form.extractErrors(e.response))
                 }
-
-                return
             }
-
-            this.$nuxt.$emit('loggedIn', true)
-
-            this.$router.push({ name: 'index' })
+        }
+    },
+    head() {
+        return {
+            title: this.title
         }
     }
 }

@@ -1,5 +1,11 @@
 <template>
-    <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+    <b-navbar
+        toggleable="lg"
+        type="light"
+        variant="light"
+        fixed="top"
+        class="border border-bottom"
+    >
         <b-navbar-brand>
             <nuxt-link :to="{ name: 'index' }" class="navbar-brand">
                 {{ appName }}
@@ -9,6 +15,13 @@
         <b-navbar-toggle target="nav-collapse" />
 
         <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav class="mr-auto">
+                <b-nav-item v-if="loggedIn">
+                    <nuxt-link class="nav-link" :to="{ name: 'confirm' }">
+                        Potwierdzenie
+                    </nuxt-link>
+                </b-nav-item>
+            </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
                 <b-nav-item-dropdown
                     v-if="loggedIn"

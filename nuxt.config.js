@@ -66,7 +66,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        withCredentials: true
+        credentials: true
     },
     /*
     ** Build configuration
@@ -110,7 +110,7 @@ export default {
                 url: process.env.AUTH_URL,
                 endpoints: {
                     user: {
-                        url: '/v1/user',
+                        url: '/spa/user',
                         method: 'get'
                     }
                 }
@@ -125,6 +125,7 @@ export default {
     },
     env: {
         appUrl: process.env.APP_URL,
+        apiUrl: process.env.API_URL,
         appName: process.env.APP_NAME
     }
 }
