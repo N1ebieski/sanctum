@@ -1,4 +1,4 @@
-# api.sanctum.local
+# sanctum.local
 
 Frontend implementation of authentication [by Laravel Sanctum](https://github.com/N1ebieski/api.sanctum.local) in Vue Nuxt.JS application. 
 
