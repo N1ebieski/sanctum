@@ -17,7 +17,7 @@ export default {
         }
     },
     async created() {
-        const response = await this.$axios.post(process.env.apiUrl + '/confirm')
+        const response = await this.$axios.post('/confirm')
 
         this.message = response.data.message
     },

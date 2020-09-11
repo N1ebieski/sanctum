@@ -87,7 +87,7 @@ export default {
             this.form.busy = true
 
             try {
-                await this.$auth.loginWith('laravelSanctum', {
+                await this.$auth.loginWith('cookie', {
                     data: this.form
                 })
 

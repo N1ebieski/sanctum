@@ -1,4 +1,3 @@
-<script>
 export default {
     created() {
         this.$nuxt.$on('toast', (config) => {
@@ -16,4 +15,3 @@ export default {
         }
     }
 }
-</script>

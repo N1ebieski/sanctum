@@ -66,6 +66,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
+        baseUrl: process.env.API_URL,
         credentials: true
     },
     /*
@@ -105,14 +106,34 @@ export default {
     },
     auth: {
         strategies: {
-            laravelSanctum: {
-                provider: 'laravel/sanctum',
-                url: process.env.AUTH_URL,
+            cookie: {
+                cookie: {
+                    name: 'XSRF-TOKEN'
+                },
                 endpoints: {
+                    csrf: {
+                        url: process.env.AUTH_URL + '/sanctum/csrf-cookie',
+                        method: 'get',
+                        withCredentials: true
+                    },
                     user: {
-                        url: '/spa/user',
-                        method: 'get'
+                        url: process.env.AUTH_URL + '/spa/user',
+                        method: 'get',
+                        withCredentials: true
+                    },
+                    login: {
+                        url: process.env.AUTH_URL + '/login',
+                        method: 'post',
+                        withCredentials: true
+                    },
+                    logout: {
+                        url: process.env.AUTH_URL + '/logout',
+                        method: 'post',
+                        withCredentials: true
                     }
+                },
+                user: {
+                    property: false
                 }
             }
         },

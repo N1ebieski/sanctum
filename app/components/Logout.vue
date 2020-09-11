@@ -8,7 +8,7 @@
 export default {
     methods: {
         async logout() {
-            await this.$auth.logout('laravelSanctum')
+            await this.$auth.logout('cookie')
 
             this.$nuxt.$emit('toast', {
                 variant: 'success',
