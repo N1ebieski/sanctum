@@ -96,7 +96,7 @@ export default {
                     title: 'Autentykacja',
                     body: 'Pomyślnie zalogowano'
                 })
-                this.$nuxt.$emit('loggedIn', true)
+                // this.$nuxt.$emit('loggedIn', true)
                 this.$router.push({ name: 'index' })
             } catch (e) {
                 this.form.busy = false

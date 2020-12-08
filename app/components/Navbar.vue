@@ -16,7 +16,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav class="mr-auto">
-                <b-nav-item v-if="loggedIn">
+                <b-nav-item v-if="$auth.loggedIn">
                     <nuxt-link class="nav-link" :to="{ name: 'confirm' }">
                         Potwierdzenie
                     </nuxt-link>
@@ -24,7 +24,7 @@
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
                 <b-nav-item-dropdown
-                    v-if="loggedIn"
+                    v-if="$auth.loggedIn"
                     :text="$auth.user.name"
                     variant="light"
                     right
@@ -50,14 +50,18 @@
 export default {
     data () {
         return {
-            appName: process.env.appName,
-            loggedIn: this.$auth.$state.loggedIn
+            appName: process.env.appName
         }
     },
+    // computed: {
+    //     loggedIn() {
+    //         return this.$auth.loggedIn
+    //     }
+    // },
     created () {
-        this.$nuxt.$on('loggedIn', (newValue) => {
-            this.loggedIn = newValue
-        })
+        // this.$nuxt.$on('loggedIn', (newValue) => {
+        //     this.loggedIn = newValue
+        // })
     }
 }
 </script>
